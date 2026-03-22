@@ -1,6 +1,8 @@
-# 鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺?#                    TrendRadar 閰嶇疆鏂囦欢
+# ═══════════════════════════════════════════════════════════════
+#                    TrendRadar 配置文件
 #                      Version: 2.2.0
-# 鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺?
+# ═══════════════════════════════════════════════════════════════
+
 app:
   timezone: "Asia/Shanghai"
   show_version_update: true
@@ -13,27 +15,27 @@ platforms:
   enabled: true
   sources:
     - id: "toutiao"
-      name: "浠婃棩澶存潯"
+      name: "今日头条"
     - id: "baidu"
-      name: "鐧惧害鐑悳"
+      name: "百度热搜"
     - id: "wallstreetcn-hot"
-      name: "鍗庡皵琛楄闂?
+      name: "华尔街见闻"
     - id: "thepaper"
-      name: "婢庢箖鏂伴椈"
+      name: "澎湃新闻"
     - id: "bilibili-hot-search"
-      name: "bilibili 鐑悳"
+      name: "bilibili 热搜"
     - id: "cls-hot"
-      name: "璐㈣仈绀剧儹闂?
+      name: "财联社热门"
     - id: "ifeng"
-      name: "鍑ゅ嚢缃?
+      name: "凤凰网"
     - id: "tieba"
-      name: "璐村惂"
+      name: "贴吧"
     - id: "weibo"
-      name: "寰崥"
+      name: "微博"
     - id: "douyin"
-      name: "鎶栭煶"
+      name: "抖音"
     - id: "zhihu"
-      name: "鐭ヤ箮"
+      name: "知乎"
 
 rss:
   enabled: true
@@ -81,7 +83,10 @@ display:
     max_items: 20
 
 notification:
-  enabled: false
+  enabled: true
+  channels:
+    feishu:
+      webhook_url: "${FEISHU_WEBHOOK_URL}"
 
 storage:
   backend: "auto"
@@ -125,7 +130,7 @@ ai_analysis:
 
 ai_translation:
   enabled: false
-  language: "涓枃"
+  language: "中文"
   prompt_file: "ai_translation_prompt.txt"
   scope:
     hotlist: false
@@ -155,4 +160,4 @@ advanced:
     bark: 4000
     slack: 4000
   batch_send_interval: 3
-  feishu_message_separator: "鈹佲攣鈹佲攣鈹佲攣鈹佲攣鈹佲攣鈹佲攣鈹佲攣鈹佲攣"
+  feishu_message_separator: "━━━━━━━━━━━━━━━━"

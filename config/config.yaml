@@ -86,7 +86,7 @@ notification:
   enabled: true
   channels:
     feishu:
-      webhook_url: ""
+      webhook_url: "https://open.feishu.cn/open-apis/bot/v2/hook/b89902d5-1da8-4017-b177-e40ea1f3a4af"
 
 ai:
   model: "deepseek/deepseek-chat"

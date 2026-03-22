@@ -1,10 +1,6 @@
-# ═══════════════════════════════════════════════════════════════
-#                    TrendRadar 配置文件
+# 鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺?#                    TrendRadar 閰嶇疆鏂囦欢
 #                      Version: 2.2.0
-# ═══════════════════════════════════════════════════════════════
-
-# 可视化配置编辑器地址: https://sansan0.github.io/TrendRadar/
-
+# 鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺?
 app:
   timezone: "Asia/Shanghai"
   show_version_update: true
@@ -17,27 +13,27 @@ platforms:
   enabled: true
   sources:
     - id: "toutiao"
-      name: "今日头条"
+      name: "浠婃棩澶存潯"
     - id: "baidu"
-      name: "百度热搜"
+      name: "鐧惧害鐑悳"
     - id: "wallstreetcn-hot"
-      name: "华尔街见闻"
+      name: "鍗庡皵琛楄闂?
     - id: "thepaper"
-      name: "澎湃新闻"
+      name: "婢庢箖鏂伴椈"
     - id: "bilibili-hot-search"
-      name: "bilibili 热搜"
+      name: "bilibili 鐑悳"
     - id: "cls-hot"
-      name: "财联社热门"
+      name: "璐㈣仈绀剧儹闂?
     - id: "ifeng"
-      name: "凤凰网"
+      name: "鍑ゅ嚢缃?
     - id: "tieba"
-      name: "贴吧"
+      name: "璐村惂"
     - id: "weibo"
-      name: "微博"
+      name: "寰崥"
     - id: "douyin"
-      name: "抖音"
+      name: "鎶栭煶"
     - id: "zhihu"
-      name: "知乎"
+      name: "鐭ヤ箮"
 
 rss:
   enabled: true
@@ -48,9 +44,6 @@ rss:
     - id: "hacker-news"
       name: "Hacker News"
       url: "https://hnrss.org/frontpage"
-    - id: "yahoo-finance"
-      name: "雅虎财经"
-      url: "https://finance.yahoo.com/news/rssindex"
 
 report:
   mode: "current"
@@ -60,12 +53,13 @@ report:
   max_news_per_keyword: 0
 
 filter:
-  method: "keyword"
+  method: "ai"
+  priority_sort_enabled: true
 
 ai_filter:
   batch_size: 200
   batch_interval: 2
-  min_score: 0.7
+  min_score: 0.5
   reclassify_threshold: 0.6
 
 display:
@@ -77,43 +71,66 @@ display:
     - ai_analysis
   regions:
     hotlist: true
-    new_items: false
+    new_items: true
     rss: true
     standalone: false
-    ai_analysis: false
+    ai_analysis: true
+  standalone:
+    platforms: ["zhihu", "wallstreetcn-hot"]
+    rss_feeds: []
+    max_items: 20
 
 notification:
-  enabled: true
-  channels:
-    feishu:
-      webhook_url: "https://open.feishu.cn/open-apis/bot/v2/hook/b89902d5-1da8-4017-b177-e40ea1f3a4af"
+  enabled: false
+
+storage:
+  backend: "auto"
+  formats:
+    sqlite: true
+    txt: false
+    html: true
+  local:
+    data_dir: "output"
+    retention_days: 0
+  remote:
+    retention_days: 0
+    endpoint_url: ""
+    bucket_name: ""
+    access_key_id: ""
+    secret_access_key: ""
+    region: ""
+  pull:
+    enabled: false
+    days: 7
 
 ai:
   model: "deepseek/deepseek-chat"
-  api_key: ""
-  api_base: ""
+  api_key: "${AI_API_KEY}"
+  api_base: "${AI_API_BASE}"
   timeout: 120
   temperature: 1.0
   max_tokens: 5000
+  num_retries: 1
+  fallback_models: []
 
 ai_analysis:
-  enabled: false
+  enabled: true
   language: "Chinese"
   prompt_file: "ai_analysis_prompt.txt"
   mode: "follow_report"
-  max_news_for_analysis: 150
+  max_news_for_analysis: 100
   include_rss: false
   include_standalone: true
-  include_rank_timeline: true
+  include_rank_timeline: false
 
 ai_translation:
   enabled: false
-  language: "中文"
+  language: "涓枃"
   prompt_file: "ai_translation_prompt.txt"
   scope:
     hotlist: false
-    rss: true
-    standalone: true
+    rss: false
+    standalone: false
 
 advanced:
   debug: false
@@ -138,4 +155,4 @@ advanced:
     bark: 4000
     slack: 4000
   batch_send_interval: 3
-  feishu_message_separator: "━━━━━━━━━━━━━━━━"
+  feishu_message_separator: "鈹佲攣鈹佲攣鈹佲攣鈹佲攣鈹佲攣鈹佲攣鈹佲攣鈹佲攣"
